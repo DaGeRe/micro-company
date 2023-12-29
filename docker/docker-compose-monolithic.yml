@@ -6,5 +6,5 @@ services:
     image: idugalic/monolithic
     ports:
      - "8080:8080"
-    command: java -Dspring.profiles.active=docker -jar /app.jar
+    command: java -javaagent:kieker-1.15.4-aspectj.jar -Dspring.profiles.active=docker -jar /app.jar
  
