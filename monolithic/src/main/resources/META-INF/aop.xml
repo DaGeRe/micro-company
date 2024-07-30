@@ -1,9 +1,18 @@
 <!DOCTYPE aspectj PUBLIC "-//AspectJ//DTD//EN" "http://www.aspectj.org/dtd/aspectj_1_5_0.dtd">
 <aspectj>
-	<weaver options="-verbose -showWeaveInfo">
-		<include within="com.idugalic..*" />
+	<weaver options="-verbose -showWeaveInfo -Xreweavable">
+		<!-- Since Spring cglib does some magic with the application, we need to instrument it directly and afterwards specify the subpackages (including com.idugalic..* results in a VerifyError) -->
+	    <include within="com.idugalic.Application" />
+	    
+		<include within="com.idugalic.common..*" />
+		<include within="com.idugalic.configserver..*" />
+		<include within="com.idugalic.queryside..*" />
+		<include within="com.idugalic.registry..*" />
+		<include within="com.idugalic.circuitbreaker..*" />
+		<include within="com.idugalic.authserver..*" />
+		<include within="com.idugalic.apigateway..*" />
 	</weaver>
 	<aspects>
-		<aspect	name="kieker.monitoring.probe.aspectj.operationExecution.OperationExecutionAspectFull" />
+		<aspect	name="kieker.monitoring.probe.aspectj.operationExecution.OperationExecutionAspectFullNoGetterAndSetter" />
 	</aspects>
 </aspectj>
