@@ -5,6 +5,7 @@
 	    <include within="com.idugalic.Application" />
 	    
 		<include within="com.idugalic.common..*" />
+		<include within="com.idugalic.commandside..*" />
 		<include within="com.idugalic.configserver..*" />
 		<include within="com.idugalic.queryside..*" />
 		<include within="com.idugalic.registry..*" />
